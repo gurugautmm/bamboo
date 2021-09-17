@@ -1,0 +1,56 @@
+---
+version: 2
+plan:
+  project-key: PROJ
+  key: PLAN3
+  name: plan1
+stages:
+- Default Stage:
+    manual: false
+    final: false
+    jobs:
+    - Default Job
+Default Job:
+  key: JOB1
+  tasks:
+# Checkout Task will be added implicitly during Specs import
+  - any-task:
+      plugin-key: aqua-scanner.aqua-scanner:aqua-scanner
+      configuration:
+        globalApiUrl: http://18.191.149.177:8080
+        globalAquaPassword: '@Password1'
+        registry: docker
+        imageName: ubuntu:latest
+        globalScannerImage: registry.aquasec.com/scanner:5.3
+        locationType: hosted
+        aquaConfig: current
+        globalAquaUser: administrator
+        globalAdditionalDockerOptions: -e SCALOCK_LOG_LEVEL=DEBUG
+        useContextVariable: 'false'
+        checkonly: 'true'
+        showNegligible: 'true'
+        globalCaCertificates: 'true'
+        register: 'true'
+triggers: []
+branches:
+  create: manually
+  delete: never
+  link-to-jira: true
+notifications: []
+labels: []
+other:
+  concurrent-build-plugin: system-default
+---
+version: 2
+plan:
+  key: PROJ-PLAN
+plan-permissions:
+- users:
+  - bamboo
+  permissions:
+  - view
+  - edit
+  - build
+  - clone
+  - admin
+...
