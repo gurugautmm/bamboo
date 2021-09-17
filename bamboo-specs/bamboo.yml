@@ -2,7 +2,7 @@
 version: 2
 plan:
   project-key: PROJ
-  key: nmk
+  key: NMK
   name: nmk
 stages:
 - Default Stage:
@@ -47,7 +47,7 @@ other:
 ---
 version: 2
 plan:
-  key: PROJ-nmk
+  key: PROJ-NMK
 plan-permissions:
 - users:
   - bamboo
