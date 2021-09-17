@@ -1,7 +1,7 @@
 ---
 version: 2
 plan:
-  project-key: PROJ
+  project-key: PROJ3
   key: PLAN3
   name: plan1
 stages:
